@@ -1,5 +1,7 @@
 #! /bin/bash
 
+echo "Coin Simulator"
+
 function flipCoin()
 {
 	for (( i=1; i<=$1; i++ ))
