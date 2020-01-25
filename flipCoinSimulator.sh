@@ -33,8 +33,25 @@ function calculatePercentage()
    echo "Percentage ${coin[@]}"
 }
 
-declare -A coin
-read -p "Enter number of time you want to flip a coin : " noOfFlip
-read -p "Enter number of coin you want to flip : " noOfCoin
-flipCoin $noOfFlip $noOfCoin
-calculatePercentage
+read -p "Wheater you want to paly [y/n] : " input
+while [ $input == "y" ]
+do
+	declare -A coin
+	read -p "Enter number of time you want to flip a coin : " noOfFlip
+	read -p "Enter your choice : 1) Singlet 2) Doublet " choice
+	case $choice in
+		1)
+			noOfCoin=1
+			;;
+		2)
+			noOfCoin=2
+			;;
+		*)
+			echo "Invalid Choice"
+			;;
+	esac
+	flipCoin $noOfFlip $noOfCoin
+	calculatePercentage
+	unset coin
+	read -p "Do you want continue [y/n] : " input
+done
