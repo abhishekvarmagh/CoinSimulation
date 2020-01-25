@@ -35,6 +35,15 @@ function calculatePercentage()
    echo "Percentage ${coin[@]}"
 }
 
+function sortingPercentage()
+{
+	echo "Win Combination Percentage"
+	for i in ${!coin[@]}
+	do
+		echo "$i ${coin[$i]}"
+	done | sort -k2 -rn | head -1
+}
+
 read -p "Wheater you want to paly [y/n] : " input
 while [ $input == "y" ]
 do
@@ -57,6 +66,7 @@ do
 	esac
 	flipCoin $noOfFlip $noOfCoin
 	calculatePercentage
+	sortingPercentage
 	unset coin
 	read -p "Do you want continue [y/n] : " input
 done
